@@ -29,6 +29,31 @@ public class Background {
     public void move(int dx, int dy){
         x += dx;
         y += dy;
+        
+        // stops moving too far to the left or top
+        if (x > 0) {
+            x = 0;
+        }    
+        if (y > 0) {
+            y = 0;
+        }
+        
+        // stops moving too far to the right or bottom
+        //1000-1500 = -500 
+        int maxX = app.width - image.width;
+        int maxY = app.height - image.height;
+
+        if (x < maxX) {
+            x = maxX;
+        }
+        if (y < maxY) {
+            y = maxY;
+        }
+    }
+    
+    public void position(int x, int y){
+        this.x = x;
+        this.y=y;
     }
     
     public void draw(){
